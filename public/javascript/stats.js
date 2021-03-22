@@ -138,7 +138,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: 'Excercises Performed',
+          label: 'Exercises Performed',
           backgroundColor: colors,
           data: durations,
         },
@@ -147,7 +147,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Excercises Performed',
+        text: 'Exercises Performed',
       },
     },
   });
@@ -158,7 +158,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: 'Excercises Performed',
+          label: 'Exercises Performed',
           backgroundColor: colors,
           data: pounds,
         },
@@ -167,7 +167,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Excercises Performed',
+        text: 'Exercises Performed',
       },
     },
   });
@@ -177,7 +177,7 @@ function calculateTotalWeight(data) {
   let totals = [];
 
   data.forEach((workout) => {
-    const workoutTotal = workout.excercises.reduce((total, { type, weight }) => {
+    const workoutTotal = workout.excerises.reduce((total, { type, weight }) => {
       if (type === 'resistance') {
         return total + weight;
       } else {
@@ -195,8 +195,8 @@ function workoutNames(data) {
   let workouts = [];
 
   data.forEach((workout) => {
-    workout.excercises.forEach((excercise) => {
-      workouts.push(excercise.name);
+    workout.exercises.forEach((exercise) => {
+      workouts.push(exercise.name);
     });
   });
 

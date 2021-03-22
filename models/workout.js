@@ -7,38 +7,44 @@ const WorkoutSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    excersises: [{
-      type:{  
-          type: String,
-          trim: true
-      },
-      name: {
-          type: String,
-          trim: true
-      },
-      weight: {
-          type: Number
-      },
-      sets: {
-        type: Number
-      },
-      reps: {
-          type: Number
-      },
-      duration: {
-        type: Number
+    exercises: [
+        {
+        type: {
+            type: String,
+            trim: true,
+            // required: "Enter exercise type"
+        },
+        name: {
+            type: String,
+            trim: true,
+            // required: "Enter exercise name"
+        },
+        duration: {
+            type: Number,
+            // required: "Enter exercise duration in minutes"
+        },
+        weight: {
+            type: Number
+        },
+        reps: {
+            type: Number
+        },
+        sets: {
+            type: Number
+        }
     }
-}]
+]
 },
 {
     toJSON: {
+    
         virtuals: true
     }
 });
 
 WorkoutSchema.virtual("totalDuration").get(function() {
-    return this.excercises.reduce((total, excercise) => {
-        return total + excercise.duration;
+    return this.exercises.reduce((total, exercise) => {
+        return total + exercise.duration;
     }, 0);
 });
 const Workout = mongoose.model("Workout", WorkoutSchema);

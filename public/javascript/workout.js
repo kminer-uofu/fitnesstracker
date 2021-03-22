@@ -3,14 +3,14 @@ async function initWorkout() {
   console.log("Last workout:", lastWorkout);
   if (lastWorkout) {
     document
-      .querySelector("a[href='/excercise?']")
-      .setAttribute("href", `/excercise?id=${lastWorkout._id}`);
+      .querySelector("a[href='/exercise?']")
+      .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
       totalDuration: lastWorkout.totalDuration,
-      numExcercises: lastWorkout.excercises.length,
-      ...tallyExcercises(lastWorkout.excercises)
+      numExercises: lastWorkout.exercises.length,
+      ...tallyExercises(lastWorkout.exercises)
     };
 
     renderWorkoutSummary(workoutSummary);
@@ -19,8 +19,8 @@ async function initWorkout() {
   }
 }
 
-function tallyExcercises(excercises) {
-  const tallied = excercises.reduce((acc, curr) => {
+function tallyExercises(exercises) {
+  const tallied = exercises.reduce((acc, curr) => {
     if (curr.type === "resistance") {
       acc.totalWeight = (acc.totalWeight || 0) + curr.weight;
       acc.totalSets = (acc.totalSets || 0) + curr.sets;
@@ -50,7 +50,7 @@ function renderWorkoutSummary(summary) {
   const workoutKeyMap = {
     date: "Date",
     totalDuration: "Total Workout Duration",
-    numExcercises: "Excercises Performed",
+    numExcerises: "Excerises Performed",
     totalWeight: "Total Weight Lifted",
     totalSets: "Total Sets Performed",
     totalReps: "Total Reps Performed",

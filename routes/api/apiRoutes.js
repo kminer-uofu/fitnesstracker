@@ -1,5 +1,5 @@
 const router = require("express").Router();
-//const { Workout } = require("../../models")
+const { Workout } = require("../../models")
 
 router.post("/api/workout/bulk", ({ body}, res) => {
     Workout.insertMany(body)
